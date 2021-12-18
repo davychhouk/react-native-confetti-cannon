@@ -35,7 +35,7 @@ const MyComponent = () => (
 | Name           | Type                   | Description                                | Required | Default        |
 | -------------- | ---------------------- | ------------------------------------------ | -------- | -------------- |
 | count          | number                 | items count to display                     | required |                |
-| size           | number                 | maximum size range of the confettis        |          | 26             |
+| size           | number                 | maximum size range of the confettis        |          | 16             |
 | origin         | {x: number, y: number} | animation position origin                  | required |                |
 | explosionSpeed | number                 | explosion duration (ms) from origin to top |          | 350            |
 | fallSpeed      | number                 | fall duration (ms) from top to bottom      |          | 3000           |
