@@ -1,9 +1,9 @@
 // @flow
 
-import * as React from 'react';
-import { StyleSheet, Animated } from 'react-native';
+import * as React from "react";
+import { StyleSheet, Animated } from "react-native";
 
-import { randomValue } from '../utils';
+import { randomValue } from "../utils";
 
 type Interpolations = Array<{
   translateX?: Animated.Interpolation,
@@ -11,34 +11,36 @@ type Interpolations = Array<{
   rotate?: Animated.Interpolation,
   rotateX?: Animated.Interpolation,
   rotateY?: Animated.Interpolation,
-  perspective?: number
+  perspective?: number,
 }>;
 
 type Props = {|
   containerTransform: Interpolations,
   transform: Interpolations,
   color: string,
+  size: number,
   opacity: Animated.Interpolation,
-  testID?: string
+  testID?: string,
 |};
 
 class Confetti extends React.PureComponent<Props> {
   props: Props;
-  width: number = randomValue(8, 16);
-  height: number = randomValue(6, 12);
   isRounded: boolean = Math.round(randomValue(0, 1)) === 1;
 
   render() {
-    const { containerTransform, transform, opacity, color } = this.props;
-    const { width, height, isRounded } = this;
+    const { containerTransform, transform, opacity, color, size } = this.props;
+    const { isRounded } = this;
     const containerStyle = { transform: containerTransform };
-    const style = { width, height, backgroundColor: color, transform, opacity};
+    const height = randomValue(size * 0.5, size);
+    const width = randomValue(size * 0.4, size * 0.75);
+    const style = { width, height, backgroundColor: color, transform, opacity };
 
     return (
       <Animated.View
         pointerEvents="none"
         renderToHardwareTextureAndroid={true}
-        style={[styles.confetti, containerStyle]}>
+        style={[styles.confetti, containerStyle]}
+      >
         <Animated.View style={[isRounded && styles.rounded, style]} />
       </Animated.View>
     );
@@ -47,13 +49,13 @@ class Confetti extends React.PureComponent<Props> {
 
 const styles = StyleSheet.create({
   confetti: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
-    bottom: 0
+    bottom: 0,
   },
   rounded: {
-    borderRadius: 100
-  }
+    borderRadius: 100,
+  },
 });
 
 export default Confetti;

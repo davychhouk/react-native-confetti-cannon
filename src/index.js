@@ -10,6 +10,7 @@ import { randomValue, randomColor } from "./utils";
 
 type Props = {|
   count: number,
+  size?: number,
   origin: {
     x: number,
     y: number,
@@ -60,6 +61,7 @@ export const DEFAULT_COLORS: Array<string> = [
 ];
 export const DEFAULT_EXPLOSION_SPEED = 350;
 export const DEFAULT_FALL_SPEED = 3000;
+export const DEFAULT_SIZE = 26;
 
 class Explosion extends React.PureComponent<Props, State> {
   props: Props;
@@ -207,7 +209,7 @@ class Explosion extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { origin, fadeOut } = this.props;
+    const { origin, fadeOut, size = DEFAULT_SIZE } = this.props;
     const { items } = this.state;
     const { height, width } = Dimensions.get("window");
 
@@ -268,6 +270,7 @@ class Explosion extends React.PureComponent<Props, State> {
           return (
             <Confetti
               color={item.color}
+              size={size}
               containerTransform={containerTransform}
               transform={transform}
               opacity={opacity}
