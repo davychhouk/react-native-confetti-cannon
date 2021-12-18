@@ -147,9 +147,9 @@ class Explosion extends React.PureComponent<Props, State> {
   start = (resume?: boolean = false) => {
     this.setState({
       ...this.state,
-      showItems: true
-    }};
-  
+      showItems: true,
+    });
+
     const {
       explosionSpeed = DEFAULT_EXPLOSION_SPEED,
       fallSpeed = DEFAULT_FALL_SPEED,
@@ -192,8 +192,8 @@ class Explosion extends React.PureComponent<Props, State> {
           }
           this.setState({
             ...this.state,
-            showItems:false
-          })
+            showItems: false,
+          });
         }
       });
   };
@@ -213,10 +213,10 @@ class Explosion extends React.PureComponent<Props, State> {
     const { items } = this.state;
     const { height, width } = Dimensions.get("window");
 
-    if(!this.state.showItems){
+    if (!this.state.showItems) {
       return null;
     }
-  
+
     return (
       <React.Fragment>
         {items.map((item: Item, index: number) => {
