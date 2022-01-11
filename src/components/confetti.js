@@ -1,9 +1,9 @@
 // @flow
 
-import * as React from "react";
-import { StyleSheet, Animated } from "react-native";
+import * as React from 'react';
+import { StyleSheet, Animated } from 'react-native';
 
-import { randomValue } from "../utils";
+import { randomValue } from '../utils';
 
 type Interpolations = Array<{
   translateX?: Animated.Interpolation,
@@ -11,7 +11,7 @@ type Interpolations = Array<{
   rotate?: Animated.Interpolation,
   rotateX?: Animated.Interpolation,
   rotateY?: Animated.Interpolation,
-  perspective?: number,
+  perspective?: number
 }>;
 
 type Props = {|
@@ -20,7 +20,7 @@ type Props = {|
   color: string,
   size: number,
   opacity: Animated.Interpolation,
-  testID?: string,
+  testID?: string
 |};
 
 class Confetti extends React.PureComponent<Props> {
@@ -39,8 +39,7 @@ class Confetti extends React.PureComponent<Props> {
       <Animated.View
         pointerEvents="none"
         renderToHardwareTextureAndroid={true}
-        style={[styles.confetti, containerStyle]}
-      >
+        style={[styles.confetti, containerStyle]}>
         <Animated.View style={[isRounded && styles.rounded, style]} />
       </Animated.View>
     );
@@ -49,13 +48,13 @@ class Confetti extends React.PureComponent<Props> {
 
 const styles = StyleSheet.create({
   confetti: {
-    position: "absolute",
+    position: 'absolute',
     left: 0,
-    bottom: 0,
+    bottom: 0
   },
   rounded: {
-    borderRadius: 100,
-  },
+    borderRadius: 100
+  }
 });
 
 export default Confetti;

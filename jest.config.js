@@ -12,12 +12,9 @@ module.exports = {
   ],
   collectCoverage: true,
   coverageReporters: ['lcov', 'text', 'html'],
-  collectCoverageFrom: [
-    '<rootDir>/src/**/*.js',
-    '!**/__tests__/**'
-  ],
+  collectCoverageFrom: ['<rootDir>/src/**/*.js', '!**/__tests__/**'],
   coverageThreshold: {
-    'global': {
+    global: {
       branches: 100,
       functions: 100,
       lines: 100,

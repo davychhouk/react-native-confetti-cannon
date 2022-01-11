@@ -7,21 +7,24 @@ jest.mock('react-native', () => {
   jest.spyOn(Platform, 'select');
   const MockPlatform = {
     ...Platform,
-    OS: 'ios',
+    OS: 'ios'
   };
   Platform.select.mockImplementation(specifics => {
-    const { OS } = MockPlatform
+    const { OS } = MockPlatform;
     if (OS in specifics) {
       return specifics[OS];
     } else if ('default' in specifics) {
       return specifics.default;
     }
     return undefined;
-  })
+  });
 
-  return Object.setPrototypeOf({
-    Platform: MockPlatform,
-  }, ReactNative);
+  return Object.setPrototypeOf(
+    {
+      Platform: MockPlatform
+    },
+    ReactNative
+  );
 });
 
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
