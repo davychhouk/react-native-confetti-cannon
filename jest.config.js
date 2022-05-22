@@ -2,14 +2,8 @@
 
 module.exports = {
   preset: 'react-native',
-  transformIgnorePatterns: [
-    'node_modules/(?!(.*-)?react(.*-)?(native)(-.*)?)',
-    'node_modules/core-js'
-  ],
-  setupFiles: [
-    '<rootDir>/node_modules/react-native/jest/setup.js',
-    '<rootDir>/jestSetup.js'
-  ],
+  transformIgnorePatterns: ['node_modules/(?!(.*-)?react(.*-)?(native)(-.*)?)', 'node_modules/core-js'],
+  setupFiles: ['<rootDir>/node_modules/react-native/jest/setup.js', '<rootDir>/jestSetup.js'],
   collectCoverage: true,
   coverageReporters: ['lcov', 'text', 'html'],
   collectCoverageFrom: ['<rootDir>/src/**/*.js', '!**/__tests__/**'],

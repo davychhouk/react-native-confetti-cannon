@@ -101,10 +101,7 @@ class Explosion extends React.PureComponent<Props, State> {
     }
   };
 
-  componentDidUpdate = ({
-    count: prevCount,
-    colors: prevColors = DEFAULT_COLORS
-  }: Props) => {
+  componentDidUpdate = ({ count: prevCount, colors: prevColors = DEFAULT_COLORS }: Props) => {
     const { count, colors = DEFAULT_COLORS } = this.props;
 
     if (count !== prevCount || colors !== prevColors) {
@@ -222,11 +219,7 @@ class Explosion extends React.PureComponent<Props, State> {
         {items.map((item: Item, index: number) => {
           const left = this.animation.interpolate({
             inputRange: [0, 1, 2],
-            outputRange: [
-              origin.x,
-              item.leftDelta * width,
-              item.leftDelta * width
-            ]
+            outputRange: [origin.x, item.leftDelta * width, item.leftDelta * width]
           });
           const top = this.animation.interpolate({
             inputRange: [0, 1, 1 + item.topDelta, 2],
@@ -252,16 +245,8 @@ class Explosion extends React.PureComponent<Props, State> {
             inputRange: [0, 1, 1.8, 2],
             outputRange: [1, 1, 1, fadeOut ? 0 : 1]
           });
-          const containerTransform = [
-            { translateX: left },
-            { translateY: top }
-          ];
-          const transform = [
-            { rotateX },
-            { rotateY },
-            { rotate: rotateZ },
-            { translateX }
-          ];
+          const containerTransform = [{ translateX: left }, { translateY: top }];
+          const transform = [{ rotateX }, { rotateY }, { rotate: rotateZ }, { translateX }];
 
           if (Platform.OS === 'android') {
             transform.push({ perspective: 100 });

@@ -8,10 +8,6 @@ const styles = StyleSheet.create({
   }
 });
 
-const ScreenSimulator = (story) => (
-  <View style={styles.container}>
-    {story()}
-  </View>
-);
+const ScreenSimulator = story => <View style={styles.container}>{story()}</View>;
 
 export default ScreenSimulator;
